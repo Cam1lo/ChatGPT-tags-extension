@@ -1,4 +1,4 @@
-import { loadComponent, updateUI } from "../../utils";
+import { getIconColor, loadComponent, updateUI } from "../../utils";
 import { TAGS } from "../../const";
 import state from "../../state";
 
@@ -21,7 +21,7 @@ export class FilterModal {
     }
 
     close() {
-        document.querySelector("#custom-filter-modal").remove();
+        document.querySelector("#custom-filter-modal")?.remove();
         this.isFilterModalOpen = false;
     }
 
@@ -40,6 +40,10 @@ export class FilterModal {
                 .getBoundingClientRect();
 
             componentElement.style.transform = `translate(${filterIconPosition.left}px, ${filterIconPosition.bottom}px)`;
+
+            componentElement.querySelectorAll("#filter-none-icon > line").forEach((line) => {
+                line.setAttribute("stroke", getIconColor());
+            });
 
             componentElement
                 .querySelector("#filter-misc")

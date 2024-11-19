@@ -141,7 +141,7 @@
       this.render();
     }
     close() {
-      document.querySelector("#custom-filter-modal").remove();
+      document.querySelector("#custom-filter-modal")?.remove();
       this.isFilterModalOpen = false;
     }
     setFilter(filter) {
@@ -155,6 +155,9 @@
         const targetContainer = document.querySelector("body");
         const filterIconPosition = document.querySelector("#custom-filter-icon").getBoundingClientRect();
         componentElement.style.transform = `translate(${filterIconPosition.left}px, ${filterIconPosition.bottom}px)`;
+        componentElement.querySelectorAll("#filter-none-icon > line").forEach((line) => {
+          line.setAttribute("stroke", getIconColor());
+        });
         componentElement.querySelector("#filter-misc").addEventListener("click", () => {
           this.setFilter(TAGS.MISC.label);
         });
