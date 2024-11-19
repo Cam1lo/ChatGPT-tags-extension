@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "ChatGptTagger",
+  "version": "1.0",
+  "permissions": ["tabs", "activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": ["*://chatgpt.com/*"],
+      "js": ["dist/main.js"],
+      "type": "module"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

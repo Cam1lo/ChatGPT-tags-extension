@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "build": "esbuild src/main.js --bundle --outfile=dist/main.js --format=iife"
+  },
+  "dependencies": {
+    "esbuild": "^0.24.0"
+  }
+}
